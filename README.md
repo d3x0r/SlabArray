@@ -22,7 +22,9 @@ This implementation is async(promise based).
 |---|----|----|----|
 |(constructor) | (<optional storage>) | hash | An optional object storage instance can be passed to the constructor. |
 |push| (string) | object | Returns a promise which resolves with the object stored in the hash at the specified string. |
-| |  |   |  |
+|get| (index) | object | returns item stored in the array at specified index |
+|length | <getter> | number | returns the number of items in the array |
+| forEach | (cb)  |    | async foreach which awaits each callback.  |
 
 
 ## In memory example.
@@ -32,13 +34,11 @@ This code fragment demonstrates the above method descriptions.
 ``` js
 import {SlabArray} from "./slabarray.mjs"
 {
-	const hash = new BloomNHash();
-        hash.set( "asdf", 1 );
-        hash.get( "asdf" ).then( (object)=>{
+	const array = new SlabArray();
+        array.push( "asdf" );
+        array.get( 0 ).then( (object)=>{
 		console.log( "This probably got deleted before actually getting done, maybe?" );
 	} );
-	// value = 1.
-        hash.delete( "asdf" );
 }
 
 ```
@@ -55,36 +55,37 @@ will refer to the external object instead.
 
 ``` js
 import {ObjectStorage} from "ObjectStorage"
+const storage = ObjectStorage( "hostAddress" ); // remote address providing storage
 import {SlabArray} from "./slabarray.mjs"
 
 ```
 
 ``` js
 import {sack} from "sack.vfs"
+const storage = sack.ObjectStorage( "Filename" );
 import {SlabArray} from "./slabarray.mjs"
 
 async function init() 
 {
-	const storage = sack.ObjectStorage( "Filename" );
-	BloomNHash.hook( storage );
+	SlabArray.hook( storage );
 
-	let hash = null;
+	let array = null;
 
 	let root = await storage.getRoot();
 	if( !root.find( "config" ) ){
-		hash = new BloomNHash(storage);
+		array = new SlabArray();
 		let root   = await storage.getRoot();
 		const file = await root.create( "config" );
-		const id   = await hash.store(); // storing the hash 
+		const id   = await storage.put( array ); // storing the hash 
 		file.write( id );
 	}else {
 		const file = await root.open("config");
-		hash       = await storage.get( {id: file.read() } );
+		array       = await storage.get( {id: file.read() } );
 	}
 
-	const already = await hash.get( "asdf" );
+	const already = await array.get( 0 );
 	if( !already )
-	        hash.set( "asdf", 1 );
+	        array.push( 1234 );
 	else
 		console.log( "Value is already:", already );
 
@@ -95,7 +96,4 @@ async function init()
 
 ## Changelog
 
-- 1.0.1 
-  - Refactor to classes.
-  - Handle registration and revival better.
-- 1.0.0 - Initial Release
+- 1.0.0 - Initial Release (WIP)
