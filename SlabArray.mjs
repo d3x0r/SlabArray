@@ -1,6 +1,8 @@
 import {sack} from "sack.vfs"
 const StoredObject = sack.ObjectStorage.StoredObject;
-//import {StoredObject} from "../commonDb.mjs"
+
+import {StoredObject} from "object-storage"
+
 
 const SlabArray_StorageTag = "?sa"
 const SlabArrayElement_StorageTag = "?ae"

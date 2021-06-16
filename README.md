@@ -32,7 +32,7 @@ This implementation is async(promise based).
 This code fragment demonstrates the above method descriptions.
 
 ``` js
-import {SlabArray} from "./slabarray.mjs"
+import {SlabArray} from "slab-array"
 {
 	const array = new SlabArray();
         array.push( "asdf" );
@@ -59,6 +59,11 @@ const storage = ObjectStorage( "hostAddress" ); // remote address providing stor
 import {SlabArray} from "./slabarray.mjs"
 
 ```
+
+``` js
+import {ObjectStorage} from "@d3x0r/object-storage"
+````
+
 
 ``` js
 import {sack} from "sack.vfs"

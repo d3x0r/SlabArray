@@ -1,5 +1,5 @@
 {
-  "name": "@d3x0r/SlabArray",
+  "name": "@d3x0r/slab-array",
   "version": "1.0.0",
   "description": "Paged array which registers with JSOX for storage.",
   "main": "slabArray.cjs",
@@ -27,6 +27,12 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/d3x0r/SlabArray-js/issues"
+  },
+  "dependencies": {
+    "@d3x0r/object-storage": "latest"
+  },
+  "altDependancies" : {
+    "sack.vfs": "latest"
   },
   "homepage": "https://github.com/d3x0r/SlabArray-js#readme"
 }
