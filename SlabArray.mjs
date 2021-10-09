@@ -1,7 +1,7 @@
 import {sack} from "sack.vfs"
 const StoredObject = sack.ObjectStorage.StoredObject;
 
-import {StoredObject} from "object-storage"
+//import {StoredObject} from "object-storage"
 
 
 const SlabArray_StorageTag = "?sa"
@@ -110,8 +110,8 @@ class SlabArrayElement extends StoredObject {
 class SlabArray extends StoredObject {
 	elements = null;
 
-	constructor() {
-		super();
+	constructor(storage) {
+		super(storage);
 	}
 	async get(index) {
 		const block = Math.floor( index / elementSize );
