@@ -2,13 +2,13 @@
   "name": "@d3x0r/slab-array",
   "version": "1.0.0",
   "description": "Paged array which registers with JSOX for storage.",
-  "main": "slabArray.cjs",
-  "module": "slabArray.mjs",
+  "main": "SlabArray.cjs",
+  "module": "SlabArray.mjs",
   "type": "commonjs",
   "exports": {
-    "index": "./slabArray.mjs",
-    "sack": "./slabArray.mjs",
-    "import": "./slabArray.mjs",
+    "index": "./SlabArray.mjs",
+    "sack": "./SlabArray.mjs",
+    "import": "./SlabArray.mjs",
     "require": "./sa.cjs"
   },
   "scripts": {
