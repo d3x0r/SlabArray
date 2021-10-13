@@ -1,6 +1,6 @@
 {
   "name": "@d3x0r/slab-array",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Paged array which registers with JSOX for storage.",
   "main": "SlabArray.cjs",
   "module": "SlabArray.mjs",

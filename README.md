@@ -101,4 +101,6 @@ async function init()
 
 ## Changelog
 
+- 1.0.1
+   - Change which object storage is used
 - 1.0.0 - Initial Release (WIP)
